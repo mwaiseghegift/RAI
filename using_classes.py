@@ -9,7 +9,7 @@ class Speaker:
     def speaker_config(self):
         for voice in self.voices:
             self.engine.setProperty('voice', voice.id)
-            print(voice.id)
+            print(voice)
         self.engine.setProperty('rate', 178)
         
     def say(self):
