@@ -53,7 +53,7 @@ def voice_response(voice_data):
         exit()
     
 time.sleep(1)
-rai_speak("Hello!.. How can I help you")
+("Hello!.. How can I help you")
 
 while 1:
     voice_data = recognize_speech()

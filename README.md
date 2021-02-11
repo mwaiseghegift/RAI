@@ -4,3 +4,5 @@
 install gTTS
 install playsound
 install pyObjC
+
+print(audio_string) just used to print the statements to the terminal
