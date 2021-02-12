@@ -2,6 +2,7 @@ import speech_recognition as srec
 from time import ctime
 import time
 import playsound
+import webbrowser
 import os
 import random #for generating files for the ausio file
 from gtts import gTTS
@@ -24,7 +25,7 @@ def recognize_speech(ask=False):
             rai_speak("Sorry am currently down")
         return voice_data
     
-def rai_speak():
+def rai_speak(audio_string):
     text_to_speech = gTTS(audio_string, lang='en')
     r = random.randint(1, 10000000)
     audio_file = 'audio-' + str(r) +'.mp3'
@@ -34,6 +35,8 @@ def rai_speak():
     os.remove(audio_file)
 
 def voice_response(voice_data):
+    if "Hello" in voice_data:
+        rai_speak("Hello There")
     if 'what is your name' in voice_data:
         rai_speak('My name RAI, and Mr Gift is my Creator')
     if "RAI what time is it" in voice_data:
