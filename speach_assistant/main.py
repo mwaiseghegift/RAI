@@ -46,6 +46,8 @@ def voice_response(voice_data):
         rai_speak('My name rai, and Mr Gift is my Creator')
     if there_exists(["rai what time is it","Whats the time?"]):
         rai_speak(ctime())
+    if there_exists(["I need help","rai I need help"]):
+        rai_speak('call my lord, here is his phone number, 0712860997')
     if there_exists(["rai search","search"]):
         search = recognize_speech("Hello, What do you want to search?")
         url='https://google.com/search?q='+search
@@ -61,7 +63,6 @@ def voice_response(voice_data):
         exit()
     
 time.sleep(1)
-("Hello!.. How can I help you")
 
 while 1:
     voice_data = recognize_speech()
