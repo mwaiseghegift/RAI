@@ -43,20 +43,20 @@ def voice_response(voice_data):
     if there_exists(['hello','RAI','anyone there']):
         rai_speak("Hello There")
     if there_exists(['what is your name','can I get your name']):
-        rai_speak('My name RAI, and Mr Gift is my Creator')
-    if there_exists(["RAI what time is it","Whats the time?"]):
+        rai_speak('My name rai, and Mr Gift is my Creator')
+    if there_exists(["rai what time is it","Whats the time?"]):
         rai_speak(ctime())
-    if "RAI search" in voice_data:
+    if there_exists(["rai search","search"]):
         search = recognize_speech("Hello, What do you want to search?")
         url='https://google.com/search?q='+search
         webbrowser.get().open(url)
         rai_speak('Here is what I found for'+search)
-    if "find location" in voice_data:
+    if there_exists(["find location","get location"]):
         location = recognize_speech("What is the location")
         url = 'https://google.nl/maps/place/'+location+'/&amp;'
         rai_speak('Here is the location')
         
-    if "power off" in voice_data:
+    if there_exists(["power off","sleep"]):
         rai_speak("Goodbye")
         exit()
     
