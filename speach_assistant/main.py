@@ -10,6 +10,11 @@ from gtts import gTTS
 
 r = srec.Recognizer()
 
+def there_exists(words):
+    for word in words:
+        if word in voice_data:
+            return True
+
 def recognize_speech(ask=False):
     with srec.Microphone() as source:
         if ask:
@@ -35,11 +40,11 @@ def rai_speak(audio_string):
     os.remove(audio_file)
 
 def voice_response(voice_data):
-    if "Hello" in voice_data:
+    if there_exists(['hello','RAI','anyone there']):
         rai_speak("Hello There")
-    if 'what is your name' in voice_data:
+    if there_exists(['what is your name','can I get your name']):
         rai_speak('My name RAI, and Mr Gift is my Creator')
-    if "RAI what time is it" in voice_data:
+    if there_exists(["RAI what time is it","Whats the time?"]):
         rai_speak(ctime())
     if "RAI search" in voice_data:
         search = recognize_speech("Hello, What do you want to search?")
