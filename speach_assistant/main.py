@@ -6,7 +6,9 @@ import webbrowser
 import os
 import random #for generating files for the ausio file
 from gtts import gTTS
-
+import bs4
+import requests
+import urllib.request
 
 r = srec.Recognizer()
 
@@ -58,7 +60,26 @@ def voice_response(voice_data):
         url = 'https://google.nl/maps/place/'+location+'/&amp;'
         rai_speak('Here is the location')
         
-    if there_exists(["power off","sleep"]):
+    if there_exists(['definition of','what is']):
+        definition = recognize_speech("What do you want to know")
+        url = urllib.request.urlopen('https://en.wikipedia.org/wiki/'+definition)
+        soup = bs4.BeautifulSoup(url,'lxml')
+        definitions = []
+        for paragraph in soup.find_all('p'):
+            definitions.append(str(paragraph))
+            
+        if definition:
+            if definitions[0]:
+                rai_speak('Sorry, please try again')
+                
+            elif definitions[1]:
+                rai_speak(definitions[1])
+            else:
+                rai_speak(definitions[2])
+        else:
+            rai_speak("Sorry, I could not find that")
+        
+    if there_exists(["power off","sleep","shutdown"]):
         rai_speak("Goodbye")
         exit()
     
