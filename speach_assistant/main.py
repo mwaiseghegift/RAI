@@ -42,7 +42,7 @@ def rai_speak(audio_string):
     os.remove(audio_file)
 
 def voice_response(voice_data):
-    if there_exists(['hello','RAI','anyone there']):
+    if there_exists(['hello','rai','anyone there']):
         rai_speak("Hello There")
     if there_exists(['what is your name','can I get your name']):
         rai_speak('My name rai, and Mr Gift is my Creator')
@@ -50,7 +50,7 @@ def voice_response(voice_data):
         rai_speak(ctime())
     if there_exists(["I need help","rai I need help"]):
         rai_speak('call my lord, here is his phone number, 0712860997')
-    if there_exists(["rai search","search"]):
+    if there_exists(["rai search","search","google"]):
         search = recognize_speech("Hello, What do you want to search?")
         url='https://google.com/search?q='+search
         webbrowser.get().open(url)
@@ -60,7 +60,7 @@ def voice_response(voice_data):
         url = 'https://google.nl/maps/place/'+location+'/&amp;'
         rai_speak('Here is the location')
         
-    if there_exists(['definition of','what is']):
+    if there_exists(['definition of','what is','who is']):
         definition = recognize_speech("What do you want to know")
         url = urllib.request.urlopen('https://en.wikipedia.org/wiki/'+definition)
         soup = bs4.BeautifulSoup(url,'lxml')
